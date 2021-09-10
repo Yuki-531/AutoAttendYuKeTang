@@ -1,31 +1,31 @@
 from urllib import request, parse
 from datetime import datetime
+from send import sendmsg
 import time
 from login import Login
 from config import USERNAME, PASSWORD, PUSH_KEY
 from urllib.parse import quote
 import string
 
-times = 20
-
+times = 900
 def timer(n, task):
     count = 0
+    tmp='1'
     while True: 
         count += 1
         if (count > times):
-            msg = 'NotFoundOnlineClass'
-            print('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
-            request.urlopen('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg)
+            msg = '关闭'
+            sendmsg(title='签到信息',msg=msg)
             print(msg)
             break
-
         result = task.enterOnlineClass()
-        if (result[0]):
-            msg = 'AttendSuccess'
-            url = quote('https://sc.ftqq.com/' + PUSH_KEY + '.send?text=' + msg + '&desp=' + result[1], safe = string.printable)
-            request.urlopen(url)
+        if (result[0] and result[0]!=tmp):
+            msg = '签到成功'
+            data = f"{msg}\n\n{result[1]}"
+            sendmsg(title='签到成功',msg=data)
             print(msg + ' CourseName: ' + result[1])
-            break
+            continue
+        tmp = result[0]
         print('The ' + str(count) + ' times did not success')
         time.sleep(n)
 
@@ -37,4 +37,4 @@ task.setBrowser()
 task.login()
 print('finish init browser')
 
-timer(5 * 60, task)
+timer(60, task)
