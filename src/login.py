@@ -39,7 +39,7 @@ class Login:
             self.browser.refresh()
             time.sleep(5)
             self.browser.find_element_by_css_selector('.onlesson').click()
-            time.sleep(2)
+            time.sleep(5)
             self.browser.find_element_by_css_selector('.lessonlist').click()
             time.sleep(5)
             self.browser.switch_to.window(self.browser.window_handles[1])
