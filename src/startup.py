@@ -18,14 +18,12 @@ def timer(n, task):
             sendmsg(title='签到信息',msg=msg)
             print(msg)
             break
-
         result = task.enterOnlineClass()
         if (result[0]):
             msg = 'AttendSuccess'
             data = f"{msg}\n\n{result[1]}"
             sendmsg(title='签到成功',msg=data)
             print(msg + ' CourseName: ' + result[1])
-            break
         print('The ' + str(count) + ' times did not success')
         time.sleep(n)
 
