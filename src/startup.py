@@ -14,16 +14,17 @@ def timer(n, task):
     while True: 
         count += 1
         if (count > times):
-            msg = 'NotFoundOnlineClass'
+            msg = '关闭'
             sendmsg(title='签到信息',msg=msg)
             print(msg)
             break
         result = task.enterOnlineClass()
         if (result[0] and result[0]!=tmp):
-            msg = 'AttendSuccess'
+            msg = '签到成功'
             data = f"{msg}\n\n{result[1]}"
             sendmsg(title='签到成功',msg=data)
             print(msg + ' CourseName: ' + result[1])
+            continue
         tmp = result[0]
         print('The ' + str(count) + ' times did not success')
         time.sleep(n)
