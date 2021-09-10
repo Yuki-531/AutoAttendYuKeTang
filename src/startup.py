@@ -8,7 +8,7 @@ from urllib.parse import quote
 import string
 
 times = 900
-
+tmp = ''
 def timer(n, task):
     count = 0
     while True: 
@@ -19,11 +19,12 @@ def timer(n, task):
             print(msg)
             break
         result = task.enterOnlineClass()
-        if (result[0]):
+        if (result[0] and result[0]!=tmp):
             msg = 'AttendSuccess'
             data = f"{msg}\n\n{result[1]}"
             sendmsg(title='签到成功',msg=data)
             print(msg + ' CourseName: ' + result[1])
+        tmp = result[0]
         print('The ' + str(count) + ' times did not success')
         time.sleep(n)
 
