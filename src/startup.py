@@ -8,9 +8,9 @@ from urllib.parse import quote
 import string
 
 times = 900
-tmp = ''
 def timer(n, task):
     count = 0
+    tmp='1'
     while True: 
         count += 1
         if (count > times):
