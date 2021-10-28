@@ -27,6 +27,6 @@ node ./src/index.js
 3. In project page, click 'Settings' -> click 'Secret'
 4. In 'Secret' page, create two secrets named 'USER_INFO' and 'PUSH_KEY':
    - 'USER_INFO': yourYuKeTangaccount|yourYuKeTangpassword
-   - 'PUSH_KEY': SENDKEY 
+   - 'PUSH_KEY': SENDKEY  
    if you use `Bark` app, you can add your Bark App Id into secret which named "BARK_ID" as following:  
    - 'BARK_ID': YourBarkID 
