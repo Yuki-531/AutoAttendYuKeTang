@@ -23,7 +23,7 @@ const sendNotify = (title, message) => {
   }
 
   if (SCKEY) {
-    got(`http://pushplus.hxtrip.com/${SCKEY}.send`, {
+    got(`https://sctapi.ftqq.com/${SCKEY}.send`, {
       searchParams: {
         text: title,
         desp: message,
